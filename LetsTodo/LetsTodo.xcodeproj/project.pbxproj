@@ -19,6 +19,8 @@
 		36EA2D9B29132D8B00F6B0D0 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 36EA2D9A29132D8B00F6B0D0 /* FSCalendar */; };
 		36EA2D9D2913310500F6B0D0 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D9C2913310500F6B0D0 /* WriteView.swift */; };
 		36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */; };
+		36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA2291362BF00F6B0D0 /* CALayer+Extesion.swift */; };
+		36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		36EA2D942913242300F6B0D0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		36EA2D9C2913310500F6B0D0 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCell.swift; sourceTree = "<group>"; };
+		36EA2DA2291362BF00F6B0D0 /* CALayer+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extesion.swift"; sourceTree = "<group>"; };
+		36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 			children = (
 				3673DF6B29124B75009B1829 /* AppDelegate.swift */,
 				3673DF6D29124B75009B1829 /* SceneDelegate.swift */,
+				36EA2DA0291362AD00F6B0D0 /* Utils */,
 				36EA2D8929131D6800F6B0D0 /* Source */,
 				3673DF7429124B77009B1829 /* Assets.xcassets */,
 				3673DF7629124B77009B1829 /* LaunchScreen.storyboard */,
@@ -113,6 +118,23 @@
 				36EA2D942913242300F6B0D0 /* SettingViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		36EA2DA0291362AD00F6B0D0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				36EA2DA1291362B500F6B0D0 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		36EA2DA1291362B500F6B0D0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				36EA2DA2291362BF00F6B0D0 /* CALayer+Extesion.swift */,
+				36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +219,8 @@
 				3673DF6E29124B75009B1829 /* SceneDelegate.swift in Sources */,
 				36EA2D91291323D300F6B0D0 /* ListViewController.swift in Sources */,
 				36EA2D932913241300F6B0D0 /* WriteViewController.swift in Sources */,
+				36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */,
+				36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */,
 				36EA2D8C29131D7B00F6B0D0 /* MainTabBarController.swift in Sources */,
 				36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */,
 				36EA2D952913242300F6B0D0 /* SettingViewController.swift in Sources */,

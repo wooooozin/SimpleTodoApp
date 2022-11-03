@@ -47,6 +47,16 @@ final class WriteView: UIView {
         return tableView
     }()
     
+    lazy var writeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .black
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 25
+        return button
+    }()
+    
     private let stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
@@ -55,8 +65,6 @@ final class WriteView: UIView {
         sv.spacing = 10
         return sv
     }()
-    
-
     
     
     // MARK: - init
@@ -74,19 +82,27 @@ final class WriteView: UIView {
     
     private func setConcentraints() {
         self.addSubview(stackView)
+        self.addSubview(writeButton)
         stackView.addArrangedSubview(calendarView)
         stackView.addArrangedSubview(tableView)
         
         stackView.backgroundColor = .white
         stackView.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
         
         calendarView.snp.makeConstraints { make in
             make.height.equalTo(350)
+        }
+        
+        writeButton.snp.makeConstraints { make in
+            make.width.equalTo(50)
+            make.height.equalTo(50)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
     }
 }

@@ -13,6 +13,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
+        setupStyle()
     }
 
 }
@@ -57,5 +58,10 @@ extension MainTabBarController {
         navigationVC.tabBarItem.selectedImage = selectedImage
         navigationVC.navigationBar.tintColor = .black
         return navigationVC
+    }
+    
+    func setupStyle() {
+        UITabBar.clearShadow()
+        tabBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
     }
 }

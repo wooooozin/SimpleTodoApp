@@ -24,9 +24,9 @@ final class WriteCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(
             by: UIEdgeInsets(
                 top: 10,
-                left: 20,
+                left: 0,
                 bottom: 10,
-                right: 20
+                right: 0
             )
         )
         contentView.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
