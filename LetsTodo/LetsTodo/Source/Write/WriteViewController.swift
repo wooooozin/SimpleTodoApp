@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 import FSCalendar
 
 final class WriteViewController: UIViewController {
@@ -74,7 +73,19 @@ extension WriteViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension WriteViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        return 130
+    }
     
+    func tableView(
+        _ tableView: UITableView,
+        estimatedHeightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 // MARK: - FSCalendarDelegate, FSCalendarDataSource
