@@ -6,11 +6,81 @@
 //
 
 import UIKit
+import SnapKit
+import FSCalendar
 
 final class WriteViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private let writeView = WriteView()
+
+    // MARK: - Lifecycle
+    
+    override func loadView() {
+        self.view = writeView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        setUpNavigationBar()
+        setUpTableView()
+        setUpCalendarView()
+    }
+}
+
+// MARK: - Method
+extension WriteViewController {
+    private func setUpNavigationBar() {
+        setNavigationTitleDay(date: Date())
+    }
+    
+    private func setUpTableView() {
+        writeView.tableView.dataSource = self
+        writeView.tableView.delegate = self
+        writeView.tableView.register(WriteCell.self, forCellReuseIdentifier: "WriteCell")
+    }
+    
+    private func setUpCalendarView() {
+        writeView.calendarView.delegate = self
+        writeView.calendarView.dataSource = self
+    }
+    
+    private func setNavigationTitleDay(date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        self.navigationItem.title = dateFormatter.string(from: date)
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension WriteViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "WriteCell"
+        ) as? WriteCell else {
+            return UITableViewCell()
+        }
+        cell.selectionStyle = .none
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension WriteViewController: UITableViewDelegate {
+    
+}
+
+// MARK: - FSCalendarDelegate, FSCalendarDataSource
+
+extension WriteViewController: FSCalendarDelegate, FSCalendarDataSource {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        setNavigationTitleDay(date: date)
     }
 }

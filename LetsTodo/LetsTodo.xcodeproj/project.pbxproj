@@ -17,6 +17,8 @@
 		36EA2D952913242300F6B0D0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D942913242300F6B0D0 /* SettingViewController.swift */; };
 		36EA2D9829132D2700F6B0D0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 36EA2D9729132D2700F6B0D0 /* SnapKit */; };
 		36EA2D9B29132D8B00F6B0D0 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 36EA2D9A29132D8B00F6B0D0 /* FSCalendar */; };
+		36EA2D9D2913310500F6B0D0 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D9C2913310500F6B0D0 /* WriteView.swift */; };
+		36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		36EA2D90291323D300F6B0D0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		36EA2D922913241300F6B0D0 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		36EA2D942913242300F6B0D0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		36EA2D9C2913310500F6B0D0 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
+		36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				36EA2D922913241300F6B0D0 /* WriteViewController.swift */,
+				36EA2D9C2913310500F6B0D0 /* WriteView.swift */,
+				36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -192,7 +198,9 @@
 				36EA2D91291323D300F6B0D0 /* ListViewController.swift in Sources */,
 				36EA2D932913241300F6B0D0 /* WriteViewController.swift in Sources */,
 				36EA2D8C29131D7B00F6B0D0 /* MainTabBarController.swift in Sources */,
+				36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */,
 				36EA2D952913242300F6B0D0 /* SettingViewController.swift in Sources */,
+				36EA2D9D2913310500F6B0D0 /* WriteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
