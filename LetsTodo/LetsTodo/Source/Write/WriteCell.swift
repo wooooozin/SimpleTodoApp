@@ -12,11 +12,12 @@ final class WriteCell: UITableViewCell {
     
     // MARK: - Properties
     
-    private let doneLabel: UILabel = {
+    let doneLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 77/255, green: 139/255, blue: 82/255, alpha: 1.0)
-        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.text = "✓ DONE"
+        label.isHidden = true
         return label
     }()
     
@@ -24,15 +25,15 @@ final class WriteCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.text = "Learn iOS with Alone T^T"
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
     }()
     
     private let memoLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray
-        label.text = "야무지게 혼자서도 잘할 수 있다!!!!!!야무지게 혼자서도 잘할 수 있다!!!!!! 야무지게 혼자서도 잘할 수 있다!!!!!! 야무지게 혼자서도 잘할 수 있다!!!!!!"
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.text = "Learn more"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -40,7 +41,7 @@ final class WriteCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.text = "10:30"
-        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return label
     }()
     

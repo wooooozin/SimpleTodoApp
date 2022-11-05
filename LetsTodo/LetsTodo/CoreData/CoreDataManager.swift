@@ -1,0 +1,133 @@
+//
+//  CoreDataManager.swift
+//  LetsTodo
+//
+//  Created by 효우 on 2022/11/03.
+//
+
+import UIKit
+import CoreData
+
+final class CoreDataManager {
+    static let shared = CoreDataManager()
+    private init() { }
+    
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    lazy var context = appDelegate?.persistentContainer.viewContext
+    let modelName: String = "Todo"
+    
+    // MARK: - Read
+    func getTodoSavedArrayFromCoreData() -> [Todo] {
+        var savedTodoList: [Todo] = []
+        if let context = context {
+            let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+            let savedDate = NSSortDescriptor(key: "date", ascending: true)
+            request.sortDescriptors = [savedDate]
+            do {
+                if let fetchedTodoList = try context.fetch(request) as? [Todo] {
+                    savedTodoList = fetchedTodoList
+                }
+            } catch {
+                print("가져오는 것 실패")
+            }
+        }
+        return savedTodoList
+    }
+    
+    func saveTodo(
+        title: String?,
+        memo: String?,
+        time: String?,
+        completion: @escaping () -> Void
+    ) {
+        if let context = context {
+            context.perform {
+                if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
+                    if let todoSaved = NSManagedObject(entity: entity, insertInto: context) as? Todo {
+                        todoSaved.title = title
+                        todoSaved.memo = memo
+                        todoSaved.date = Date()
+                        todoSaved.time = time
+                        if context.hasChanges {
+                            do {
+                                try context.save()
+                                completion()
+                            } catch {
+                                print(error)
+                                completion()
+                            }
+                        }
+                    }
+                }
+            }
+            completion()
+        }
+    }
+    
+    func deleteTodo(with todo: Todo, completion: @escaping () -> Void) {
+        // 날짜 옵셔널 바인딩
+        guard let savedDate = todo.date else {
+            completion()
+            return
+        }
+        if let context = context {
+            let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+            request.predicate = NSPredicate(format: "date = %@", savedDate as CVarArg)
+            
+            do {
+                if let fetchedTodoList = try context.fetch(request) as? [Todo] {
+                    if let targetTodo = fetchedTodoList.first {
+                        context.delete(targetTodo)
+                        if context.hasChanges {
+                            do {
+                                try context.save()
+                                completion()
+                            } catch {
+                                print(error)
+                                completion()
+                            }
+                        }
+                    }
+                }
+                completion()
+            } catch {
+                print("지우는 것 실패")
+                completion()
+            }
+        }
+    }
+    
+    func updateTdo(with todo: Todo, completion: @escaping () -> Void) {
+        // 날짜 옵셔널 바인딩
+        guard let savedDate = todo.date else {
+            completion()
+            return
+        }
+        if let context = context {
+            let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+            request.predicate = NSPredicate(format: "savedDate = %@", savedDate as CVarArg)
+            
+            do {
+                if let fetchedTodoList = try context.fetch(request) as? [Todo] {
+                    // 배열의 첫번째
+                    if var targetTodo = fetchedTodoList.first {
+                        targetTodo = todo
+                        if context.hasChanges {
+                            do {
+                                try context.save()
+                                completion()
+                            } catch {
+                                print(error)
+                                completion()
+                            }
+                        }
+                    }
+                }
+                completion()
+            } catch {
+                print("지우는 것 실패")
+                completion()
+            }
+        }
+    }
+}

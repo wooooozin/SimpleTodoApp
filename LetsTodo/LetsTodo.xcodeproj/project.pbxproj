@@ -21,6 +21,11 @@
 		36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */; };
 		36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA2291362BF00F6B0D0 /* CALayer+Extesion.swift */; };
 		36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */; };
+		36EA2DA829136D9000F6B0D0 /* LetsTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA629136D9000F6B0D0 /* LetsTodo.xcdatamodeld */; };
+		36EA2DB02913881F00F6B0D0 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */; };
+		36EA2DB12913881F00F6B0D0 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */; };
+		36EA2DB32913884B00F6B0D0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */; };
+		36EA2DB62913895100F6B0D0 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DB52913895100F6B0D0 /* TodoData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCell.swift; sourceTree = "<group>"; };
 		36EA2DA2291362BF00F6B0D0 /* CALayer+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extesion.swift"; sourceTree = "<group>"; };
 		36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
+		36EA2DA729136D9000F6B0D0 /* LetsTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LetsTodo.xcdatamodel; sourceTree = "<group>"; };
+		36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		36EA2DB52913895100F6B0D0 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +85,12 @@
 				3673DF6B29124B75009B1829 /* AppDelegate.swift */,
 				3673DF6D29124B75009B1829 /* SceneDelegate.swift */,
 				36EA2DA0291362AD00F6B0D0 /* Utils */,
+				36EA2DA92913871B00F6B0D0 /* CoreData */,
+				36EA2DB42913893400F6B0D0 /* Models */,
 				36EA2D8929131D6800F6B0D0 /* Source */,
 				3673DF7429124B77009B1829 /* Assets.xcassets */,
 				3673DF7629124B77009B1829 /* LaunchScreen.storyboard */,
+				36EA2DA629136D9000F6B0D0 /* LetsTodo.xcdatamodeld */,
 				3673DF7929124B77009B1829 /* Info.plist */,
 			);
 			path = LetsTodo;
@@ -135,6 +148,24 @@
 				36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		36EA2DA92913871B00F6B0D0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */,
+				36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */,
+				36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		36EA2DB42913893400F6B0D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				36EA2DB52913895100F6B0D0 /* TodoData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,11 +251,16 @@
 				36EA2D91291323D300F6B0D0 /* ListViewController.swift in Sources */,
 				36EA2D932913241300F6B0D0 /* WriteViewController.swift in Sources */,
 				36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */,
+				36EA2DB02913881F00F6B0D0 /* Todo+CoreDataClass.swift in Sources */,
 				36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */,
+				36EA2DB12913881F00F6B0D0 /* Todo+CoreDataProperties.swift in Sources */,
+				36EA2DB62913895100F6B0D0 /* TodoData.swift in Sources */,
 				36EA2D8C29131D7B00F6B0D0 /* MainTabBarController.swift in Sources */,
 				36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */,
 				36EA2D952913242300F6B0D0 /* SettingViewController.swift in Sources */,
 				36EA2D9D2913310500F6B0D0 /* WriteView.swift in Sources */,
+				36EA2DB32913884B00F6B0D0 /* CoreDataManager.swift in Sources */,
+				36EA2DA829136D9000F6B0D0 /* LetsTodo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +506,19 @@
 			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		36EA2DA629136D9000F6B0D0 /* LetsTodo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				36EA2DA729136D9000F6B0D0 /* LetsTodo.xcdatamodel */,
+			);
+			currentVersion = 36EA2DA729136D9000F6B0D0 /* LetsTodo.xcdatamodel */;
+			path = LetsTodo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3673DF6029124B75009B1829 /* Project object */;
 }
