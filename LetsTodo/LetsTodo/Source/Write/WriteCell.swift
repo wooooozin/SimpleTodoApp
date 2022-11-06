@@ -12,6 +12,12 @@ final class WriteCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var todo: Todo? {
+        didSet {
+            configureUIwithData()
+        }
+    }
+    
     let doneLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 77/255, green: 139/255, blue: 82/255, alpha: 1.0)
@@ -81,6 +87,8 @@ final class WriteCell: UITableViewCell {
         contentView.layer.cornerRadius = self.frame.height * 0.2
     }
     
+    // MARK: - Methods
+    
     func setConcentraints() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(doneLabel)
@@ -94,5 +102,12 @@ final class WriteCell: UITableViewCell {
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
+    }
+    
+    func configureUIwithData() {
+        guard let todo = todo else { return }
+        titleLabel.text = todo.title
+        memoLabel.text = todo.memo
+        dateLabel.text = todo.savedDateString
     }
 }

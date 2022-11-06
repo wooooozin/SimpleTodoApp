@@ -14,29 +14,7 @@ final class WriteView: UIView {
     // MARK: - Properties
     
     var calendarView: FSCalendar = {
-        let calendar = FSCalendar()
-        calendar.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
-        calendar.appearance.todayColor = UIColor(red: 255/255, green: 164/255, blue: 108/255, alpha: 1.0)
-        calendar.appearance.selectionColor = UIColor(red: 255/255, green: 164/255, blue: 108/255, alpha: 0.5)
-        calendar.appearance.eventDefaultColor = UIColor(red: 79/255, green: 197/255, blue: 237/255, alpha: 1.0)
-        calendar.appearance.borderRadius = 0.5
-        calendar.layer.cornerRadius = 30
-        calendar.clipsToBounds = true
-        calendar.headerHeight = 40
-        calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 12)
-        calendar.appearance.headerTitleColor = .systemGray
-        calendar.appearance.weekdayTextColor = .systemGray
-        calendar.appearance.headerDateFormat = "MMMM, y"
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 12)
-        calendar.appearance.titleFont = UIFont.boldSystemFont(ofSize: 16)
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "S"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "M"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "T"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "W"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "T"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "F"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "S"
+        let calendar = CalendarView()
         return calendar
     }()
     

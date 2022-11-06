@@ -20,15 +20,17 @@ final class CoreDataManager {
     func getTodoSavedArrayFromCoreData() -> [Todo] {
         var savedTodoList: [Todo] = []
         if let context = context {
-            let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
-            let savedDate = NSSortDescriptor(key: "date", ascending: true)
-            request.sortDescriptors = [savedDate]
-            do {
-                if let fetchedTodoList = try context.fetch(request) as? [Todo] {
-                    savedTodoList = fetchedTodoList
+            context.perform {
+                let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+                let savedDate = NSSortDescriptor(key: "date", ascending: true)
+                request.sortDescriptors = [savedDate]
+                do {
+                    if let fetchedTodoList = try context.fetch(request) as? [Todo] {
+                        savedTodoList = fetchedTodoList
+                    }
+                } catch {
+                    print("가져오는 것 실패")
                 }
-            } catch {
-                print("가져오는 것 실패")
             }
         }
         return savedTodoList
@@ -129,5 +131,30 @@ final class CoreDataManager {
                 completion()
             }
         }
+    }
+    
+    func searchDateTodoFromCoreData(date: Date) -> [Todo] {
+        var todoList: [Todo] = []
+        let request: NSFetchRequest<Todo> = Todo.fetchRequest()
+        request.predicate = NSPredicate(
+            format: "date >= %@ && date <= %@",
+            Calendar.current.startOfDay(for: date) as CVarArg,
+            Calendar.current.startOfDay(for: date + 86400) as CVarArg
+        )
+        if let context = context {
+            context.perform {
+                let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+                let savedDate = NSSortDescriptor(key: "date", ascending: true)
+                request.sortDescriptors = [savedDate]
+                do {
+                    if let fetchedTodoList = try context.fetch(request) as? [Todo] {
+                        todoList = fetchedTodoList
+                    }
+                } catch {
+                    print("가져오는 것 실패")
+                }
+            }
+        }
+        return todoList
     }
 }

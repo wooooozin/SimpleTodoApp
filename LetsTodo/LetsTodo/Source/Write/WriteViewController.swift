@@ -13,6 +13,8 @@ final class WriteViewController: UIViewController {
     // MARK: - Properties
     
     private let writeView = WriteView()
+    let todoManager = CoreDataManager.shared
+    var selectedDate: Date?
 
     // MARK: - Lifecycle
     
@@ -25,6 +27,11 @@ final class WriteViewController: UIViewController {
         setUpNavigationBar()
         setUpTableView()
         setUpCalendarView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        writeView.tableView.reloadData()
     }
 }
 
@@ -56,7 +63,7 @@ extension WriteViewController {
 
 extension WriteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.todoManager.searchDateTodoFromCoreData(date: selectedDate ?? Date()).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,7 +72,10 @@ extension WriteViewController: UITableViewDataSource {
         ) as? WriteCell else {
             return UITableViewCell()
         }
+        let todoSaved = self.todoManager.searchDateTodoFromCoreData(date: selectedDate ?? Date())[indexPath.row]
+        
         cell.selectionStyle = .none
+        cell.todo = todoSaved
         return cell
     }
 }
