@@ -39,6 +39,7 @@ final class CoreDataManager {
     func saveTodo(
         title: String?,
         memo: String?,
+        date: Date?,
         time: String?,
         completion: @escaping () -> Void
     ) {
@@ -48,7 +49,7 @@ final class CoreDataManager {
                     if let todoSaved = NSManagedObject(entity: entity, insertInto: context) as? Todo {
                         todoSaved.title = title
                         todoSaved.memo = memo
-                        todoSaved.date = Date()
+                        todoSaved.date = date
                         todoSaved.time = time
                         if context.hasChanges {
                             do {
@@ -99,19 +100,18 @@ final class CoreDataManager {
         }
     }
     
-    func updateTdo(with todo: Todo, completion: @escaping () -> Void) {
+    func updateTdo(with todo: Todo, date: Date?, completion: @escaping () -> Void) {
         // 날짜 옵셔널 바인딩
-        guard let savedDate = todo.date else {
+        guard let savedDate = date else {
             completion()
             return
         }
         if let context = context {
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
-            request.predicate = NSPredicate(format: "savedDate = %@", savedDate as CVarArg)
+            request.predicate = NSPredicate(format: "date = %@", savedDate as CVarArg)
             
             do {
                 if let fetchedTodoList = try context.fetch(request) as? [Todo] {
-                    // 배열의 첫번째
                     if var targetTodo = fetchedTodoList.first {
                         targetTodo = todo
                         if context.hasChanges {

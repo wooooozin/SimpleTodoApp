@@ -27,11 +27,14 @@ final class WriteViewController: UIViewController {
         setUpNavigationBar()
         setUpTableView()
         setUpCalendarView()
+        writeView.writeButton.addTarget(self, action: #selector(writeButtonTapped), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        writeView.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.writeView.tableView.reloadData()
+        }
     }
 }
 
@@ -57,6 +60,15 @@ extension WriteViewController {
         dateFormatter.dateFormat = "EEEE"
         self.navigationItem.title = dateFormatter.string(from: date)
     }
+    
+    @objc private func writeButtonTapped() {
+        print(#function)
+        let vc = UINavigationController(rootViewController: AddTodoViewController())
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true) {
+            self.navigationItem.title = ""
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -72,7 +84,8 @@ extension WriteViewController: UITableViewDataSource {
         ) as? WriteCell else {
             return UITableViewCell()
         }
-        let todoSaved = self.todoManager.searchDateTodoFromCoreData(date: selectedDate ?? Date())[indexPath.row]
+        let todoSaved = self.todoManager.searchDateTodoFromCoreData(
+            date: selectedDate ?? Date())[indexPath.row]
         
         cell.selectionStyle = .none
         cell.todo = todoSaved
@@ -103,5 +116,9 @@ extension WriteViewController: UITableViewDelegate {
 extension WriteViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         setNavigationTitleDay(date: date)
+        selectedDate = date
+        DispatchQueue.main.async {
+            self.writeView.tableView.reloadData()
+        }
     }
 }

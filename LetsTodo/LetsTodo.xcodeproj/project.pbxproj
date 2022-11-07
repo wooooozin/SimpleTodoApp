@@ -12,7 +12,8 @@
 		3673DF7529124B77009B1829 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3673DF7429124B77009B1829 /* Assets.xcassets */; };
 		3673DF7829124B77009B1829 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3673DF7629124B77009B1829 /* LaunchScreen.storyboard */; };
 		36CECAFD29161FF400B2C1CF /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CECAFC29161FF400B2C1CF /* AddTodoView.swift */; };
-		36CECAFF291623E000B2C1CF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CECAFE291623E000B2C1CF /* CalendarView.swift */; };
+		36CECAFF291623E000B2C1CF /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CECAFE291623E000B2C1CF /* CustomCalendarView.swift */; };
+		36D2E33829187210004A7537 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2E33729187210004A7537 /* AddTodoViewController.swift */; };
 		36EA2D8C29131D7B00F6B0D0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D8B29131D7B00F6B0D0 /* MainTabBarController.swift */; };
 		36EA2D91291323D300F6B0D0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D90291323D300F6B0D0 /* ListViewController.swift */; };
 		36EA2D932913241300F6B0D0 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2D922913241300F6B0D0 /* WriteViewController.swift */; };
@@ -38,7 +39,8 @@
 		3673DF7729124B77009B1829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3673DF7929124B77009B1829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36CECAFC29161FF400B2C1CF /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
-		36CECAFE291623E000B2C1CF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		36CECAFE291623E000B2C1CF /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
+		36D2E33729187210004A7537 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		36EA2D8B29131D7B00F6B0D0 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		36EA2D90291323D300F6B0D0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		36EA2D922913241300F6B0D0 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				36CECAFC29161FF400B2C1CF /* AddTodoView.swift */,
+				36D2E33729187210004A7537 /* AddTodoViewController.swift */,
 			);
 			path = AddTodo;
 			sourceTree = "<group>";
@@ -132,7 +135,7 @@
 			children = (
 				36EA2D922913241300F6B0D0 /* WriteViewController.swift */,
 				36EA2D9C2913310500F6B0D0 /* WriteView.swift */,
-				36CECAFE291623E000B2C1CF /* CalendarView.swift */,
+				36CECAFE291623E000B2C1CF /* CustomCalendarView.swift */,
 				36EA2D9E2913355F00F6B0D0 /* WriteCell.swift */,
 				36CECAFB29161FDC00B2C1CF /* AddTodo */,
 			);
@@ -263,7 +266,8 @@
 				3673DF6C29124B75009B1829 /* AppDelegate.swift in Sources */,
 				3673DF6E29124B75009B1829 /* SceneDelegate.swift in Sources */,
 				36EA2D91291323D300F6B0D0 /* ListViewController.swift in Sources */,
-				36CECAFF291623E000B2C1CF /* CalendarView.swift in Sources */,
+				36CECAFF291623E000B2C1CF /* CustomCalendarView.swift in Sources */,
+				36D2E33829187210004A7537 /* AddTodoViewController.swift in Sources */,
 				36EA2D932913241300F6B0D0 /* WriteViewController.swift in Sources */,
 				36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */,
 				36EA2DB02913881F00F6B0D0 /* Todo+CoreDataClass.swift in Sources */,

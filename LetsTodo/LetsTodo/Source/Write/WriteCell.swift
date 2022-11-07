@@ -30,23 +30,21 @@ final class WriteCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "Learn iOS with Alone T^T"
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
     private let memoLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray
-        label.text = "Learn more"
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return label
     }()
     
-    private let dateLabel: UILabel = {
+    private let timeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "10:30"
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return label
     }()
@@ -94,7 +92,7 @@ final class WriteCell: UITableViewCell {
         stackView.addArrangedSubview(doneLabel)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(memoLabel)
-        stackView.addArrangedSubview(dateLabel)
+        stackView.addArrangedSubview(timeLabel)
         
         stackView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(10)
@@ -108,6 +106,6 @@ final class WriteCell: UITableViewCell {
         guard let todo = todo else { return }
         titleLabel.text = todo.title
         memoLabel.text = todo.memo
-        dateLabel.text = todo.savedDateString
+        timeLabel.text = todo.time
     }
 }
