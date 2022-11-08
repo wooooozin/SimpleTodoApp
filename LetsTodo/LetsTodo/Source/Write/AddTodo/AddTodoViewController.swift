@@ -44,6 +44,7 @@ extension AddTodoViewController {
         let date = dateformatter.string(from: Date())
         self.dateTime = date
         addTodoView.setTimeLabel.text = dateTime
+        addTodoView.setNotiLabel.text = NotificationTime.onTime.notiString
     }
     
     private func setUpCalendarView() {
@@ -77,8 +78,9 @@ extension AddTodoViewController {
         )
     }
     
+    // MARK: - @objc Methods
+
     @objc private func closeButtonTapped() {
-        print(#function)
         self.dismiss(animated: true)
     }
     
@@ -98,6 +100,8 @@ extension AddTodoViewController {
         print(#function)
     }
 }
+
+// MARK: - DatePickerViewDelegate
 
 extension AddTodoViewController: DatePickerViewDelegate {
     func updateDateTime(_ dateTime: String) {

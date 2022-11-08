@@ -111,7 +111,6 @@ extension TimePickerViewController {
     private func setUpDatePicker() {
         datePicker.timeZone = .autoupdatingCurrent
         datePicker.datePickerMode = .time
-        datePicker.minuteInterval = 5
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.backgroundColor = .white
         datePicker.sizeToFit()

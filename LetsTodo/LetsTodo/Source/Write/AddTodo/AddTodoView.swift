@@ -108,7 +108,7 @@ class AddTodoView: UIView {
     
     let setNotiLabel: UILabel = {
         let label = UILabel()
-        label.text = "in 5 min"
+        label.text = "On the dot"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()

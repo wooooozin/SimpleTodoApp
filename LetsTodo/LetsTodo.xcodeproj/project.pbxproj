@@ -28,8 +28,8 @@
 		36EA2DB02913881F00F6B0D0 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */; };
 		36EA2DB12913881F00F6B0D0 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */; };
 		36EA2DB32913884B00F6B0D0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */; };
-		36EA2DB62913895100F6B0D0 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DB52913895100F6B0D0 /* TodoData.swift */; };
 		36EE278A291A26630050003A /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2789291A26630050003A /* TimePickerViewController.swift */; };
+		36EE278C291A49D50050003A /* NotificationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE278B291A49D50050003A /* NotificationTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,8 +54,8 @@
 		36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		36EA2DB52913895100F6B0D0 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
 		36EE2789291A26630050003A /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
+		36EE278B291A49D50050003A /* NotificationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +183,7 @@
 		36EA2DB42913893400F6B0D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				36EA2DB52913895100F6B0D0 /* TodoData.swift */,
+				36EE278B291A49D50050003A /* NotificationTime.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,9 +278,9 @@
 				36CECAFD29161FF400B2C1CF /* AddTodoView.swift in Sources */,
 				36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */,
 				36EA2DB12913881F00F6B0D0 /* Todo+CoreDataProperties.swift in Sources */,
-				36EA2DB62913895100F6B0D0 /* TodoData.swift in Sources */,
 				36EA2D8C29131D7B00F6B0D0 /* MainTabBarController.swift in Sources */,
 				36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */,
+				36EE278C291A49D50050003A /* NotificationTime.swift in Sources */,
 				36EA2D952913242300F6B0D0 /* SettingViewController.swift in Sources */,
 				36EA2D9D2913310500F6B0D0 /* WriteView.swift in Sources */,
 				36EA2DB32913884B00F6B0D0 /* CoreDataManager.swift in Sources */,
