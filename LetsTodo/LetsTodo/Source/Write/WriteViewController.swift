@@ -64,7 +64,7 @@ extension WriteViewController {
     @objc private func writeButtonTapped() {
         print(#function)
         let vc = UINavigationController(rootViewController: AddTodoViewController())
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true) {
             self.navigationItem.title = ""
         }

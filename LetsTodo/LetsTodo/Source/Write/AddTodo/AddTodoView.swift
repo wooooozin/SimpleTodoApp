@@ -17,6 +17,7 @@ class AddTodoView: UIView {
 
     var calendarView: FSCalendar = {
         let calendar = CalendarView()
+        calendar.layer.cornerRadius = 20
         calendar.scope = .week
         calendar.appearance.headerTitleColor = .black
         calendar.calendarWeekdayView.weekdayLabels[0].text = "S"
@@ -31,6 +32,13 @@ class AddTodoView: UIView {
     
     let titleTextField: UITextField = {
         let tf = UITextField()
+        let spacer = UIView()
+        spacer.snp.makeConstraints { make in
+            make.width.equalTo(12)
+            make.height.equalTo(40)
+        }
+        tf.leftView = spacer
+        tf.leftViewMode = .always
         tf.borderStyle = .none
         tf.textColor = .black
         tf.tintColor = .black
@@ -40,9 +48,9 @@ class AddTodoView: UIView {
         return tf
     }()
     
-    let bindLineView: UIView = {
+    private let bindLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray3
+        view.backgroundColor = .white
         return view
     }()
     
@@ -60,57 +68,87 @@ class AddTodoView: UIView {
     
     private let timeLabel: UILabel = {
         let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: "")
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "stopwatch.fill")
-        attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: "  Task Time"))
-        label.attributedText = attributedString
+        label.text = "Task Time"
         label.tintColor = .black
         label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
+    let setTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "10:00 PM"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
-    lazy var timeButton: UIButton = {
+    private let timeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.tintColor = .black
+        imageView.image = UIImage(systemName: "stopwatch.fill")
+        return imageView
+    }()
+    
+    lazy var setTimeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
         button.tintColor = .systemGray
-        button.setTitle("10:00 PM", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.semanticContentAttribute = .forceLeftToRight
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .leading
+        return button
+    }()
+        
+    private let notiLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Notification"
+        label.tintColor = .black
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
+    let setNotiLabel: UILabel = {
+        let label = UILabel()
+        label.text = "in 5 min"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        return label
+    }()
+    
+    private let notiImageVIew: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.tintColor = .black
+        imageView.image = UIImage(systemName: "bell.fill")
+        return imageView
+    }()
+    
+    lazy var setNotiButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+        button.tintColor = .systemGray
         return button
     }()
     
-    private let notiLabel: UILabel = {
-        let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: "")
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "bell.fill")
-        attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: "  Notification"))
-        label.attributedText = attributedString
-        label.tintColor = .black
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        return label
+    lazy var closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Cancel", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.black.cgColor
+        return button
     }()
     
-    lazy var notiButton: UIButton = {
+    lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-        button.tintColor = .systemGray
-        button.setTitle("in 5 min", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.semanticContentAttribute = .forceRightToLeft
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .leading
+        button.setTitle("Save Task", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
         return button
     }()
     
@@ -118,12 +156,12 @@ class AddTodoView: UIView {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.alignment = .fill
-        sv.distribution = .fill
-        sv.spacing = 10
+        sv.distribution = .fillProportionally
+        sv.spacing = 20
         return sv
     }()
     
-    private let textContainView: UIStackView = {
+    private let textContainStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.alignment = .fill
@@ -135,30 +173,39 @@ class AddTodoView: UIView {
         return sv
     }()
     
-    private let timeContainView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .horizontal
-        sv.alignment = .fill
-        sv.distribution = .fillEqually
-        sv.spacing = 5
-        sv.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
-        return sv
+    private let timeContainView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        return view
     }()
     
-    private let notiContainView: UIStackView = {
+    
+    private let notiContainView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    private let buttonContainStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.alignment = .fill
         sv.distribution = .fillEqually
-        sv.spacing = 5
-        sv.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
+        sv.spacing = 20
+        sv.backgroundColor = .white
         return sv
     }()
+
     
     // MARK: - init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
         setConcentraints()
     }
     
@@ -170,48 +217,124 @@ class AddTodoView: UIView {
 
     private func setConcentraints() {
         self.addSubview(stackView)
+        self.addSubview(timeContainView)
+        self.addSubview(notiContainView)
+        self.addSubview(buttonContainStackView)
+        
         stackView.addArrangedSubview(calendarView)
-        stackView.addArrangedSubview(textContainView)
-        stackView.addArrangedSubview(timeContainView)
-        stackView.addArrangedSubview(notiContainView)
+        stackView.addArrangedSubview(textContainStackView)
         
-        textContainView.addArrangedSubview(titleTextField)
-        textContainView.addArrangedSubview(bindLineView)
-        textContainView.addArrangedSubview(memoTextView)
+        textContainStackView.addArrangedSubview(titleTextField)
+        textContainStackView.addArrangedSubview(bindLineView)
+        textContainStackView.addArrangedSubview(memoTextView)
         
-        timeContainView.addArrangedSubview(timeLabel)
-        timeContainView.addArrangedSubview(timeButton)
+        timeContainView.addSubview(timeImageView)
+        timeContainView.addSubview(timeLabel)
+        timeContainView.addSubview(setTimeLabel)
+        timeContainView.addSubview(setTimeButton)
         
-        notiContainView.addArrangedSubview(notiLabel)
-        notiContainView.addArrangedSubview(notiButton)
+        notiContainView.addSubview(notiImageVIew)
+        notiContainView.addSubview(notiLabel)
+        notiContainView.addSubview(setNotiLabel)
+        notiContainView.addSubview(setNotiButton)
         
-        stackView.backgroundColor = .white
+        buttonContainStackView.addArrangedSubview(closeButton)
+        buttonContainStackView.addArrangedSubview(saveButton)
+
         
+        // MARK: - Layout
+
         stackView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalTo(self.snp.leading).offset(20)
+            make.trailing.equalTo(self.snp.trailing).offset(-20)
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(10)
+            make.bottom.equalTo(timeContainView.snp.top).offset(-20)
         }
         
         calendarView.snp.makeConstraints { make in
-            make.height.equalTo(100)
-        }
-        
-        textContainView.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(200)
         }
         
         titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(textContainView.snp.top).offset(10)
-            make.leading.equalTo(textContainView.snp.leading).offset(10)
-            make.trailing.equalTo(textContainView.snp.trailing).offset(-10)
+            make.height.equalTo(40)
         }
         
         bindLineView.snp.makeConstraints { make in
-            make.height.equalTo(1.0)
-            make.leading.equalTo(textContainView.snp.leading).offset(10)
-            make.trailing.equalTo(textContainView.snp.trailing).offset(-10)
+            make.height.equalTo(3.0)
+        }
+        
+        timeContainView.snp.makeConstraints { make in
+            make.height.equalTo(80)
+            make.bottom.equalTo(notiContainView.snp.top).offset(-20)
+            make.leading.equalTo(self.snp.leading).offset(20)
+            make.trailing.equalTo(self.snp.trailing).offset(-20)
+        }
+        
+        timeImageView.snp.makeConstraints { make in
+            make.leading.equalTo(timeContainView.snp.leading).offset(30)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+        
+        timeLabel.snp.makeConstraints { make in
+            make.leading.equalTo(timeImageView.snp.trailing).offset(10)
+            make.centerY.equalTo(timeImageView.snp.centerY)
+            make.top.equalTo(timeContainView.snp.top).offset(20)
+            make.bottom.equalTo(timeContainView.snp.bottom).offset(-20)
+        }
+        
+        setTimeButton.snp.makeConstraints { make in
+            make.trailing.equalTo(timeContainView.snp.trailing).offset(-30)
+            make.width.equalTo(15)
+            make.height.equalTo(15)
+        }
+        
+        setTimeLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(setTimeButton.snp.leading).offset(-10)
+            make.centerY.equalTo(setTimeButton.snp.centerY)
+            make.top.equalTo(timeContainView.snp.top).offset(20)
+            make.bottom.equalTo(timeContainView.snp.bottom).offset(-20)
+        }
+        
+        notiContainView.snp.makeConstraints { make in
+            make.height.equalTo(80)
+            make.top.equalTo(timeContainView.snp.bottom).offset(20)
+            make.leading.equalTo(self.snp.leading).offset(20)
+            make.trailing.equalTo(self.snp.trailing).offset(-20)
+        }
+        
+        notiImageVIew.snp.makeConstraints { make in
+            make.leading.equalTo(notiContainView.snp.leading).offset(30)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+        
+        notiLabel.snp.makeConstraints { make in
+            make.leading.equalTo(notiImageVIew.snp.trailing).offset(10)
+            make.centerY.equalTo(notiImageVIew.snp.centerY)
+            make.top.equalTo(notiContainView.snp.top).offset(20)
+            make.bottom.equalTo(notiContainView.snp.bottom).offset(-20)
+        }
+        
+        setNotiButton.snp.makeConstraints { make in
+            make.trailing.equalTo(notiContainView.snp.trailing).offset(-30)
+            make.width.equalTo(15)
+            make.height.equalTo(15)
+        }
+        
+        setNotiLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(setNotiButton.snp.leading).offset(-10)
+            make.centerY.equalTo(setNotiButton.snp.centerY)
+            make.top.equalTo(notiContainView.snp.top).offset(20)
+            make.bottom.equalTo(notiContainView.snp.bottom).offset(-20)
+        }
+        
+        buttonContainStackView.snp.makeConstraints { make in
+            make.height.equalTo(50)
+            make.top.equalTo(notiContainView.snp.bottom).offset(20)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            make.leading.equalTo(self.snp.leading).offset(20)
+            make.trailing.equalTo(self.snp.trailing).offset(-20)
         }
     }
 }
