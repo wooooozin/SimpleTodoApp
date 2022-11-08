@@ -29,6 +29,7 @@
 		36EA2DB12913881F00F6B0D0 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */; };
 		36EA2DB32913884B00F6B0D0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */; };
 		36EA2DB62913895100F6B0D0 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DB52913895100F6B0D0 /* TodoData.swift */; };
+		36EE278A291A26630050003A /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2789291A26630050003A /* TimePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		36EA2DB52913895100F6B0D0 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
+		36EE2789291A26630050003A /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				36CECAFC29161FF400B2C1CF /* AddTodoView.swift */,
 				36D2E33729187210004A7537 /* AddTodoViewController.swift */,
+				36EE2789291A26630050003A /* TimePickerViewController.swift */,
 			);
 			path = AddTodo;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				36D2E33829187210004A7537 /* AddTodoViewController.swift in Sources */,
 				36EA2D932913241300F6B0D0 /* WriteViewController.swift in Sources */,
 				36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */,
+				36EE278A291A26630050003A /* TimePickerViewController.swift in Sources */,
 				36EA2DB02913881F00F6B0D0 /* Todo+CoreDataClass.swift in Sources */,
 				36CECAFD29161FF400B2C1CF /* AddTodoView.swift in Sources */,
 				36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */,

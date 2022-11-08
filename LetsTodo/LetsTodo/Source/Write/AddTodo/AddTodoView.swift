@@ -50,7 +50,8 @@ class AddTodoView: UIView {
     
     private let bindLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1.0
+        )
         return view
     }()
     
@@ -77,7 +78,6 @@ class AddTodoView: UIView {
     
     let setTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "10:00 PM"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
@@ -260,7 +260,7 @@ class AddTodoView: UIView {
         }
         
         bindLineView.snp.makeConstraints { make in
-            make.height.equalTo(3.0)
+            make.height.equalTo(1.0)
         }
         
         timeContainView.snp.makeConstraints { make in

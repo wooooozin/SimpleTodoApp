@@ -65,9 +65,7 @@ extension WriteViewController {
         print(#function)
         let vc = UINavigationController(rootViewController: AddTodoViewController())
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true) {
-            self.navigationItem.title = ""
-        }
+        self.present(vc, animated: true)
     }
 }
 

@@ -14,6 +14,7 @@ final class AddTodoViewController: UIViewController {
     // MARK: - Properties
     
     private let addTodoView = AddTodoView()
+    var dateTime: String?
     
     // MARK: - Lifecycle
     
@@ -25,6 +26,8 @@ final class AddTodoViewController: UIViewController {
         super.viewDidLoad()
         setUpNavigationBar()
         setUpCalendarView()
+        setUpButtonAction()
+        setUpDatas()
     }
 }
 
@@ -34,9 +37,72 @@ extension AddTodoViewController {
         self.navigationItem.title = "Add new task"
     }
     
+    private func setUpDatas() {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .none
+        dateformatter.timeStyle = .short
+        let date = dateformatter.string(from: Date())
+        self.dateTime = date
+        addTodoView.setTimeLabel.text = dateTime
+    }
+    
     private func setUpCalendarView() {
         addTodoView.calendarView.delegate = self
         addTodoView.calendarView.dataSource = self
+    }
+        
+    private func setUpButtonAction() {
+        addTodoView.closeButton.addTarget(
+            self,
+            action: #selector(closeButtonTapped),
+            for: .touchUpInside
+        )
+        
+        addTodoView.saveButton.addTarget(
+            self,
+            action: #selector(saveButtonTapped),
+            for: .touchUpInside
+        )
+        
+        addTodoView.setTimeButton.addTarget(
+            self,
+            action: #selector(setTimeButtonTapped),
+            for: .touchUpInside
+        )
+        
+        addTodoView.setNotiButton.addTarget(
+            self,
+            action: #selector(setNotiButtonTapped),
+            for: .touchUpInside
+        )
+    }
+    
+    @objc private func closeButtonTapped() {
+        print(#function)
+        self.dismiss(animated: true)
+    }
+    
+    @objc private func saveButtonTapped() {
+        print(#function)
+    }
+    
+    @objc private func setTimeButtonTapped() {
+        print(#function)
+        let vc = TimePickerViewController()
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
+    
+    @objc private func setNotiButtonTapped() {
+        print(#function)
+    }
+}
+
+extension AddTodoViewController: DatePickerViewDelegate {
+    func updateDateTime(_ dateTime: String) {
+        self.dateTime = dateTime
+        addTodoView.setTimeLabel.text = dateTime
     }
 }
 
