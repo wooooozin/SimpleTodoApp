@@ -14,8 +14,11 @@ final class AddTodoViewController: UIViewController {
     // MARK: - Properties
     
     private let addTodoView = AddTodoView()
-    var dateTime: String?
-    
+    private var dateTime: String?
+    private var notiTime: String?
+    private var selectedDate: Date?
+    let todoManager = CoreDataManager.shared
+
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -43,6 +46,7 @@ extension AddTodoViewController {
         dateformatter.timeStyle = .short
         let date = dateformatter.string(from: Date())
         self.dateTime = date
+        self.selectedDate = Date()
         addTodoView.setTimeLabel.text = dateTime
         addTodoView.setNotiLabel.text = NotificationTime.onTime.notiString
     }
@@ -85,7 +89,18 @@ extension AddTodoViewController {
     }
     
     @objc private func saveButtonTapped() {
-        print(#function)
+        let title = addTodoView.titleTextField.text
+        let time = addTodoView.setTimeLabel.text
+        let date = selectedDate
+        let memo = addTodoView.memoTextView.text == "Write your task here" ? "" : addTodoView.memoTextView.text
+        
+        todoManager.saveTodo(
+            title: title,
+            memo: memo,
+            date: date,
+            time: time) {
+                self.dismiss(animated: true)
+            }
     }
     
     @objc private func setTimeButtonTapped() {
@@ -98,15 +113,26 @@ extension AddTodoViewController {
     
     @objc private func setNotiButtonTapped() {
         print(#function)
+        let vc = NotiPickerViewController()
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
     }
 }
 
-// MARK: - DatePickerViewDelegate
+// MARK: - DatePickerViewDelegate, NotiPickerViewDelegate
 
 extension AddTodoViewController: DatePickerViewDelegate {
     func updateDateTime(_ dateTime: String) {
         self.dateTime = dateTime
         addTodoView.setTimeLabel.text = dateTime
+    }
+}
+
+extension AddTodoViewController: NotiPickerViewDelegate {
+    func updateNotiText(_ text: String) {
+        self.notiTime = text
+        addTodoView.setNotiLabel.text = notiTime
     }
 }
 
@@ -118,6 +144,11 @@ extension AddTodoViewController: FSCalendarDelegate, FSCalendarDataSource {
             make.height.equalTo(bounds.height)
         }
         self.view.layoutIfNeeded()
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.selectedDate = date
+        print(selectedDate)
     }
 
 }

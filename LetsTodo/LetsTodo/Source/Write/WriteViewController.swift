@@ -25,6 +25,7 @@ final class WriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
+        setUpDatas()
         setUpTableView()
         setUpCalendarView()
         writeView.writeButton.addTarget(self, action: #selector(writeButtonTapped), for: .touchUpInside)
@@ -34,7 +35,9 @@ final class WriteViewController: UIViewController {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
             self.writeView.tableView.reloadData()
+            self.writeView.calendarView.reloadData()
         }
+        print(todoManager.getTodoSavedArrayFromCoreData().count)
     }
 }
 
@@ -42,6 +45,10 @@ final class WriteViewController: UIViewController {
 extension WriteViewController {
     private func setUpNavigationBar() {
         setNavigationTitleDay(date: Date())
+    }
+    
+    private func setUpDatas() {
+        self.selectedDate = Date()
     }
     
     private func setUpTableView() {
@@ -82,9 +89,7 @@ extension WriteViewController: UITableViewDataSource {
         ) as? WriteCell else {
             return UITableViewCell()
         }
-        let todoSaved = self.todoManager.searchDateTodoFromCoreData(
-            date: selectedDate ?? Date())[indexPath.row]
-        
+        let todoSaved = self.todoManager.searchDateTodoFromCoreData(date: selectedDate ?? Date())[indexPath.row]
         cell.selectionStyle = .none
         cell.todo = todoSaved
         return cell
@@ -119,4 +124,13 @@ extension WriteViewController: FSCalendarDelegate, FSCalendarDataSource {
             self.writeView.tableView.reloadData()
         }
     }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if todoManager.searchDateTodoFromCoreData(date: date).count != 0 {
+            return 1
+        }
+        return 0
+    }
 }
+
+

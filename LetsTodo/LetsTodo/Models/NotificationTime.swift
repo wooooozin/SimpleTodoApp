@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum NotificationTime {
+enum NotificationTime: CaseIterable {
     case onTime
     case tenMinutesAgo
     case twelveMinutesAgo

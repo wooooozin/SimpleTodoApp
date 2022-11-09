@@ -2,7 +2,7 @@
 //  Todo+CoreDataProperties.swift
 //  LetsTodo
 //
-//  Created by 효우 on 2022/11/03.
+//  Created by 효우 on 2022/11/09.
 //
 //
 
@@ -16,10 +16,10 @@ extension Todo {
         return NSFetchRequest<Todo>(entityName: "Todo")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var memo: String?
     @NSManaged public var date: Date?
+    @NSManaged public var memo: String?
     @NSManaged public var time: String?
+    @NSManaged public var title: String?
 
     var savedDateString: String? {
         let myFormatter = DateFormatter()

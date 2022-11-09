@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3629FAE2291B3D370057D791 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629FAE0291B3D370057D791 /* Todo+CoreDataClass.swift */; };
+		3629FAE3291B3D370057D791 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629FAE1291B3D370057D791 /* Todo+CoreDataProperties.swift */; };
 		3673DF6C29124B75009B1829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673DF6B29124B75009B1829 /* AppDelegate.swift */; };
 		3673DF6E29124B75009B1829 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673DF6D29124B75009B1829 /* SceneDelegate.swift */; };
 		3673DF7529124B77009B1829 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3673DF7429124B77009B1829 /* Assets.xcassets */; };
@@ -25,14 +27,15 @@
 		36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA2291362BF00F6B0D0 /* CALayer+Extesion.swift */; };
 		36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */; };
 		36EA2DA829136D9000F6B0D0 /* LetsTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DA629136D9000F6B0D0 /* LetsTodo.xcdatamodeld */; };
-		36EA2DB02913881F00F6B0D0 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */; };
-		36EA2DB12913881F00F6B0D0 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */; };
 		36EA2DB32913884B00F6B0D0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */; };
 		36EE278A291A26630050003A /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2789291A26630050003A /* TimePickerViewController.swift */; };
 		36EE278C291A49D50050003A /* NotificationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE278B291A49D50050003A /* NotificationTime.swift */; };
+		36EE278E291A4C580050003A /* NotiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE278D291A4C580050003A /* NotiPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3629FAE0291B3D370057D791 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3629FAE1291B3D370057D791 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3673DF6829124B75009B1829 /* LetsTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3673DF6B29124B75009B1829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3673DF6D29124B75009B1829 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,11 +54,10 @@
 		36EA2DA2291362BF00F6B0D0 /* CALayer+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extesion.swift"; sourceTree = "<group>"; };
 		36EA2DA4291362FB00F6B0D0 /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
 		36EA2DA729136D9000F6B0D0 /* LetsTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LetsTodo.xcdatamodel; sourceTree = "<group>"; };
-		36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		36EE2789291A26630050003A /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		36EE278B291A49D50050003A /* NotificationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTime.swift; sourceTree = "<group>"; };
+		36EE278D291A4C580050003A /* NotiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				36CECAFC29161FF400B2C1CF /* AddTodoView.swift */,
 				36D2E33729187210004A7537 /* AddTodoViewController.swift */,
 				36EE2789291A26630050003A /* TimePickerViewController.swift */,
+				36EE278D291A4C580050003A /* NotiPickerViewController.swift */,
 			);
 			path = AddTodo;
 			sourceTree = "<group>";
@@ -173,8 +176,8 @@
 		36EA2DA92913871B00F6B0D0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				36EA2DAE2913881F00F6B0D0 /* Todo+CoreDataClass.swift */,
-				36EA2DAF2913881F00F6B0D0 /* Todo+CoreDataProperties.swift */,
+				3629FAE0291B3D370057D791 /* Todo+CoreDataClass.swift */,
+				3629FAE1291B3D370057D791 /* Todo+CoreDataProperties.swift */,
 				36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
@@ -272,12 +275,13 @@
 				36CECAFF291623E000B2C1CF /* CustomCalendarView.swift in Sources */,
 				36D2E33829187210004A7537 /* AddTodoViewController.swift in Sources */,
 				36EA2D932913241300F6B0D0 /* WriteViewController.swift in Sources */,
+				36EE278E291A4C580050003A /* NotiPickerViewController.swift in Sources */,
+				3629FAE2291B3D370057D791 /* Todo+CoreDataClass.swift in Sources */,
 				36EA2DA3291362BF00F6B0D0 /* CALayer+Extesion.swift in Sources */,
+				3629FAE3291B3D370057D791 /* Todo+CoreDataProperties.swift in Sources */,
 				36EE278A291A26630050003A /* TimePickerViewController.swift in Sources */,
-				36EA2DB02913881F00F6B0D0 /* Todo+CoreDataClass.swift in Sources */,
 				36CECAFD29161FF400B2C1CF /* AddTodoView.swift in Sources */,
 				36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */,
-				36EA2DB12913881F00F6B0D0 /* Todo+CoreDataProperties.swift in Sources */,
 				36EA2D8C29131D7B00F6B0D0 /* MainTabBarController.swift in Sources */,
 				36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */,
 				36EE278C291A49D50050003A /* NotificationTime.swift in Sources */,

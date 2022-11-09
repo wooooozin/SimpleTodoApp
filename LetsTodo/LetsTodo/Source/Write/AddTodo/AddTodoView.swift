@@ -42,6 +42,7 @@ class AddTodoView: UIView {
         tf.borderStyle = .none
         tf.textColor = .black
         tf.tintColor = .black
+        tf.autocorrectionType = .no
         tf.autocapitalizationType = .none
         tf.font = UIFont.boldSystemFont(ofSize: 14)
         tf.placeholder = " Write your task title here"
@@ -59,6 +60,7 @@ class AddTodoView: UIView {
         let tv = UITextView()
         tv.textColor = .lightGray
         tv.tintColor = .lightGray
+        tv.autocorrectionType = .no
         tv.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
         tv.font = UIFont.systemFont(ofSize: 12)
         tv.autocapitalizationType = .none
@@ -108,7 +110,6 @@ class AddTodoView: UIView {
     
     let setNotiLabel: UILabel = {
         let label = UILabel()
-        label.text = "On the dot"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
@@ -146,9 +147,10 @@ class AddTodoView: UIView {
         button.setTitle("Save Task", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
+        button.backgroundColor = .black.withAlphaComponent(0.5)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
+        button.isEnabled = false
         return button
     }()
     
@@ -207,6 +209,8 @@ class AddTodoView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
         setConcentraints()
+        memoTextView.delegate = self
+        titleTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -335,6 +339,25 @@ class AddTodoView: UIView {
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
             make.leading.equalTo(self.snp.leading).offset(20)
             make.trailing.equalTo(self.snp.trailing).offset(-20)
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension AddTodoView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = nil
+    }
+}
+
+// MARK: UITextFieldDelegate
+
+extension AddTodoView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if titleTextField.text != nil {
+            saveButton.isEnabled = true
+            saveButton.backgroundColor = .black
         }
     }
 }

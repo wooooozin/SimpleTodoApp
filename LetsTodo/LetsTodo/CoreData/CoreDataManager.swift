@@ -16,21 +16,18 @@ final class CoreDataManager {
     lazy var context = appDelegate?.persistentContainer.viewContext
     let modelName: String = "Todo"
     
-    // MARK: - Read
     func getTodoSavedArrayFromCoreData() -> [Todo] {
         var savedTodoList: [Todo] = []
         if let context = context {
-            context.perform {
-                let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
-                let savedDate = NSSortDescriptor(key: "date", ascending: true)
-                request.sortDescriptors = [savedDate]
-                do {
-                    if let fetchedTodoList = try context.fetch(request) as? [Todo] {
-                        savedTodoList = fetchedTodoList
-                    }
-                } catch {
-                    print("가져오는 것 실패")
+            let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+            let savedDate = NSSortDescriptor(key: "date", ascending: true)
+            request.sortDescriptors = [savedDate]
+            do {
+                if let fetchedTodoList = try context.fetch(request) as? [Todo] {
+                    savedTodoList = fetchedTodoList
                 }
+            } catch {
+                print("가져오는 것 실패")
             }
         }
         return savedTodoList
@@ -44,27 +41,26 @@ final class CoreDataManager {
         completion: @escaping () -> Void
     ) {
         if let context = context {
-            context.perform {
-                if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
-                    if let todoSaved = NSManagedObject(entity: entity, insertInto: context) as? Todo {
-                        todoSaved.title = title
-                        todoSaved.memo = memo
-                        todoSaved.date = date
-                        todoSaved.time = time
-                        if context.hasChanges {
-                            do {
-                                try context.save()
-                                completion()
-                            } catch {
-                                print(error)
-                                completion()
-                            }
+            if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
+                if let todoSaved = NSManagedObject(entity: entity, insertInto: context) as? Todo {
+                    todoSaved.title = title
+                    todoSaved.memo = memo
+                    todoSaved.date = date
+                    todoSaved.time = time
+                    
+                    if context.hasChanges {
+                        do {
+                            try context.save()
+                            completion()
+                        } catch {
+                            print(error)
+                            completion()
                         }
                     }
                 }
             }
-            completion()
         }
+        completion()
     }
     
     func deleteTodo(with todo: Todo, completion: @escaping () -> Void) {
@@ -101,7 +97,6 @@ final class CoreDataManager {
     }
     
     func updateTdo(with todo: Todo, date: Date?, completion: @escaping () -> Void) {
-        // 날짜 옵셔널 바인딩
         guard let savedDate = date else {
             completion()
             return
@@ -139,21 +134,13 @@ final class CoreDataManager {
         request.predicate = NSPredicate(
             format: "date >= %@ && date <= %@",
             Calendar.current.startOfDay(for: date) as CVarArg,
-            Calendar.current.startOfDay(for: date + 86400) as CVarArg
+            Calendar.current.startOfDay(for: date + 86399) as CVarArg
         )
-        if let context = context {
-            context.perform {
-                let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
-                let savedDate = NSSortDescriptor(key: "date", ascending: true)
-                request.sortDescriptors = [savedDate]
-                do {
-                    if let fetchedTodoList = try context.fetch(request) as? [Todo] {
-                        todoList = fetchedTodoList
-                    }
-                } catch {
-                    print("가져오는 것 실패")
-                }
-            }
+        do{
+            let objects = try context?.fetch(request)
+            todoList = objects ?? []
+        } catch {
+            print(error)
         }
         return todoList
     }
