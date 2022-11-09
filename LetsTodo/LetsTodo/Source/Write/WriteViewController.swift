@@ -46,6 +46,8 @@ final class WriteViewController: UIViewController {
             self.writeView.calendarView.reloadData()
         }
         print(todoManager.getTodoSavedArrayFromCoreData().count)
+        print(todoManager.searchDateTodoFromCoreData(date: selectedDate ?? Date()).count)
+        print(selectedDate)
     }
 }
 
@@ -144,6 +146,7 @@ extension WriteViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         setNavigationTitleDay(date: date)
         selectedDate = date
+        print(selectedDate)
         DispatchQueue.main.async {
             self.writeView.tableView.reloadData()
         }

@@ -20,6 +20,7 @@ final class WriteView: UIView {
     
     var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         return tableView

@@ -16,7 +16,7 @@ final class AddTodoViewController: UIViewController {
     private let addTodoView = AddTodoView()
     private var dateTime: String?
     private var notiTime: String?
-    private var selectedDate: Date?
+    private var selectedDate = Date()
     let todoManager = CoreDataManager.shared
 
     // MARK: - Lifecycle
@@ -32,6 +32,15 @@ final class AddTodoViewController: UIViewController {
         setUpButtonAction()
         setUpDatas()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addTodoView.calendarView.reloadData()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+   }
 }
 
 // MARK: - Method
@@ -147,7 +156,7 @@ extension AddTodoViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.selectedDate = date
+        self.selectedDate = date + 54000
         print(selectedDate)
     }
 

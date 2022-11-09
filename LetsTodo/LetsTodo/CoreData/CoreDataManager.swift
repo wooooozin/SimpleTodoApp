@@ -134,7 +134,7 @@ final class CoreDataManager {
         request.predicate = NSPredicate(
             format: "date >= %@ && date <= %@",
             Calendar.current.startOfDay(for: date) as CVarArg,
-            Calendar.current.startOfDay(for: date + 86399) as CVarArg
+            Calendar.current.startOfDay(for: date + 86400) as CVarArg
         )
         do{
             let objects = try context?.fetch(request)

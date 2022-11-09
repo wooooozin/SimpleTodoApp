@@ -14,7 +14,7 @@ class AddTodoView: UIView {
     // MARK: - Properties
     
     var calendarHeight: NSLayoutConstraint!
-
+    
     var calendarView: FSCalendar = {
         let calendar = CalendarView()
         calendar.layer.cornerRadius = 20
@@ -98,7 +98,7 @@ class AddTodoView: UIView {
         button.tintColor = .systemGray
         return button
     }()
-        
+    
     private let notiLabel: UILabel = {
         let label = UILabel()
         label.text = "Notification"
@@ -201,7 +201,7 @@ class AddTodoView: UIView {
         sv.backgroundColor = .white
         return sv
     }()
-
+    
     
     // MARK: - init
     
@@ -218,7 +218,7 @@ class AddTodoView: UIView {
     }
     
     // MARK: - Methods
-
+    
     private func setConcentraints() {
         self.addSubview(stackView)
         self.addSubview(timeContainView)
@@ -244,10 +244,10 @@ class AddTodoView: UIView {
         
         buttonContainStackView.addArrangedSubview(closeButton)
         buttonContainStackView.addArrangedSubview(saveButton)
-
+        
         
         // MARK: - Layout
-
+        
         stackView.snp.makeConstraints { make in
             make.leading.equalTo(self.snp.leading).offset(20)
             make.trailing.equalTo(self.snp.trailing).offset(-20)
@@ -347,7 +347,9 @@ class AddTodoView: UIView {
 
 extension AddTodoView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = nil
+        if textView.text == "Write your task here" {
+            textView.text = nil
+        }
     }
 }
 
@@ -359,5 +361,12 @@ extension AddTodoView: UITextFieldDelegate {
             saveButton.isEnabled = true
             saveButton.backgroundColor = .black
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.titleTextField {
+            self.memoTextView.becomeFirstResponder()
+        }
+        return true
     }
 }

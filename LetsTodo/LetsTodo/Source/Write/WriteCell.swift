@@ -38,7 +38,7 @@ final class WriteCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .systemGray
         label.numberOfLines = 3
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         return label
     }()
     
