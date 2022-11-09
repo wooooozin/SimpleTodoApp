@@ -37,7 +37,7 @@ final class WriteCell: UITableViewCell {
     private let memoLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return label
     }()
@@ -53,7 +53,7 @@ final class WriteCell: UITableViewCell {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.alignment = .fill
-        sv.distribution = .fillEqually
+        sv.distribution = .fillProportionally
         sv.spacing = 5
         return sv
     }()

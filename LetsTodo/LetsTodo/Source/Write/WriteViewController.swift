@@ -15,7 +15,15 @@ final class WriteViewController: UIViewController {
     private let writeView = WriteView()
     let todoManager = CoreDataManager.shared
     var selectedDate: Date?
-
+    
+    private lazy var pullDownButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.tintColor = .black
+        button.showsMenuAsPrimaryAction = true
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -44,7 +52,23 @@ final class WriteViewController: UIViewController {
 // MARK: - Method
 extension WriteViewController {
     private func setUpNavigationBar() {
+        let editAction = UIAction(
+            title: "Edit",
+            image: UIImage(systemName: "pencil.tip"),
+            handler: { _ in
+                print("1")
+            }
+        )
+        let deleteAction = UIAction(
+            title: "Delete",
+            image: UIImage(systemName: "trash"),
+            handler: { _ in
+                print("2")
+            }
+        )
+        pullDownButton.menu = UIMenu(title: "", options: .displayInline, children: [editAction, deleteAction])
         setNavigationTitleDay(date: Date())
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: pullDownButton)
     }
     
     private func setUpDatas() {
