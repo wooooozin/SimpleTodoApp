@@ -47,6 +47,7 @@ final class CoreDataManager {
                     todoSaved.memo = memo
                     todoSaved.date = date
                     todoSaved.time = time
+                    todoSaved.id = UUID()
                     
                     if context.hasChanges {
                         do {
@@ -65,13 +66,13 @@ final class CoreDataManager {
     
     func deleteTodo(with todo: Todo, completion: @escaping () -> Void) {
         // 날짜 옵셔널 바인딩
-        guard let savedDate = todo.date else {
+        guard let savedID = todo.id else {
             completion()
             return
         }
         if let context = context {
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
-            request.predicate = NSPredicate(format: "date = %@", savedDate as CVarArg)
+            request.predicate = NSPredicate(format: "id = %@", savedID as CVarArg)
             
             do {
                 if let fetchedTodoList = try context.fetch(request) as? [Todo] {
@@ -131,11 +132,14 @@ final class CoreDataManager {
     func searchDateTodoFromCoreData(date: Date) -> [Todo] {
         var todoList: [Todo] = []
         let request: NSFetchRequest<Todo> = Todo.fetchRequest()
+        let savedDate = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [savedDate]
         request.predicate = NSPredicate(
             format: "date >= %@ && date <= %@",
             Calendar.current.startOfDay(for: date) as CVarArg,
             Calendar.current.startOfDay(for: date + 86400) as CVarArg
         )
+        
         do{
             let objects = try context?.fetch(request)
             todoList = objects ?? []
