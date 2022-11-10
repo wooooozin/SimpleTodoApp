@@ -118,8 +118,9 @@ extension TimePickerViewController {
     
     @objc private func saveDateButtonTapped() {
         let dateformatter = DateFormatter()
-        dateformatter.dateStyle = .none
-        dateformatter.timeStyle = .short
+        dateformatter.amSymbol = "AM"
+        dateformatter.pmSymbol = "PM"
+        dateformatter.dateFormat = "a hh:mm"
         let date = dateformatter.string(from: datePicker.date)
         self.delegate?.updateDateTime(date)
         self.dismiss(animated: true)

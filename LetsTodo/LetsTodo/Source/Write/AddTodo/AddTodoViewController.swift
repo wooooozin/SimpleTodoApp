@@ -51,8 +51,9 @@ extension AddTodoViewController {
     
     private func setUpDatas() {
         let dateformatter = DateFormatter()
-        dateformatter.dateStyle = .none
-        dateformatter.timeStyle = .short
+        dateformatter.amSymbol = "AM"
+        dateformatter.pmSymbol = "PM"
+        dateformatter.dateFormat = "a hh:mm"
         let date = dateformatter.string(from: Date())
         self.dateTime = date
         self.selectedDate = Date()

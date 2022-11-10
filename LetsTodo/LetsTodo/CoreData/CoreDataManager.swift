@@ -132,7 +132,7 @@ final class CoreDataManager {
     func searchDateTodoFromCoreData(date: Date) -> [Todo] {
         var todoList: [Todo] = []
         let request: NSFetchRequest<Todo> = Todo.fetchRequest()
-        let savedDate = NSSortDescriptor(key: "date", ascending: false)
+        let savedDate = NSSortDescriptor(key: "time", ascending: true)
         request.sortDescriptors = [savedDate]
         request.predicate = NSPredicate(
             format: "date >= %@ && date <= %@",
