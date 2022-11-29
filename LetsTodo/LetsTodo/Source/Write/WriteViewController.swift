@@ -15,6 +15,7 @@ final class WriteViewController: UIViewController {
     private let writeView = WriteView()
     let todoManager = CoreDataManager.shared
     var selectedDate: Date?
+    var todoData: Todo?
     
     private lazy var pullDownButton: UIButton = {
         let button = UIButton(type: .system)
@@ -53,24 +54,24 @@ final class WriteViewController: UIViewController {
 // MARK: - Method
 extension WriteViewController {
     private func setUpNavigationBar() {
-        let editAction = UIAction(
-            title: "finish",
-            image: UIImage(systemName: "app.badge.checkmark"),
-            handler: { _ in
-                print("1")
-            }
-        )
-        let deleteAction = UIAction(
-            title: "Delete",
-            image: UIImage(systemName: "trash"),
-            handler: { _ in
-                print("2")
-                self.writeView.tableView.setEditing(true, animated: true)
-            }
-        )
-        pullDownButton.menu = UIMenu(title: "", options: .displayInline, children: [editAction, deleteAction])
+//        let editAction = UIAction(
+//            title: "Done",
+//            image: UIImage(systemName: "app.badge.checkmark"),
+//            handler: { _ in
+//                print("1")
+//            }
+//        )
+//        let deleteAction = UIAction(
+//            title: "Delete",
+//            image: UIImage(systemName: "trash"),
+//            handler: { _ in
+//                print("2")
+//                self.writeView.tableView.setEditing(true, animated: true)
+//            }
+//        )
+//        pullDownButton.menu = UIMenu(title: "", options: .displayInline, children: [editAction, deleteAction])
         setNavigationTitleDay(date: Date())
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: pullDownButton)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: pullDownButton)
     }
     
     private func setUpDatas() {
