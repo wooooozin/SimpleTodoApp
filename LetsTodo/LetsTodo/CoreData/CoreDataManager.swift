@@ -65,11 +65,7 @@ final class CoreDataManager {
     }
     
     func deleteTodo(with id: UUID, completion: @escaping () -> Void) {
-//        // 날짜 옵셔널 바인딩
-//        guard let savedID = id else {
-//            completion()
-//            return
-//        }
+
         if let context = context {
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
             request.predicate = NSPredicate(format: "id = %@", id.uuidString as CVarArg)

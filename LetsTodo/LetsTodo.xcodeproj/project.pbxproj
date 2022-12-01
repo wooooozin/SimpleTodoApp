@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3607F6912937F0DF007F5856 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3607F6902937F0DF007F5856 /* TodoModel.swift */; };
 		3629FAE2291B3D370057D791 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629FAE0291B3D370057D791 /* Todo+CoreDataClass.swift */; };
 		3629FAE3291B3D370057D791 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629FAE1291B3D370057D791 /* Todo+CoreDataProperties.swift */; };
 		3673DF6C29124B75009B1829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673DF6B29124B75009B1829 /* AppDelegate.swift */; };
@@ -35,7 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3607F6902937F0DF007F5856 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		3629FAE0291B3D370057D791 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3629FAE1291B3D370057D791 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3673DF6829124B75009B1829 /* LetsTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +96,6 @@
 				3673DF6D29124B75009B1829 /* SceneDelegate.swift */,
 				36EA2DA0291362AD00F6B0D0 /* Utils */,
 				36EA2DA92913871B00F6B0D0 /* CoreData */,
-				36EA2DB42913893400F6B0D0 /* Models */,
 				36EA2D8929131D6800F6B0D0 /* Source */,
 				3673DF7429124B77009B1829 /* Assets.xcassets */,
 				3673DF7629124B77009B1829 /* LaunchScreen.storyboard */,
@@ -184,14 +181,6 @@
 				36EA2DB22913884B00F6B0D0 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		36EA2DB42913893400F6B0D0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3607F6902937F0DF007F5856 /* TodoModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,7 +273,6 @@
 				3629FAE3291B3D370057D791 /* Todo+CoreDataProperties.swift in Sources */,
 				36EE278A291A26630050003A /* TimePickerViewController.swift in Sources */,
 				36CECAFD29161FF400B2C1CF /* AddTodoView.swift in Sources */,
-				3607F6912937F0DF007F5856 /* TodoModel.swift in Sources */,
 				36EA2DA5291362FB00F6B0D0 /* UITabBar+Extension.swift in Sources */,
 				36EA2D8C29131D7B00F6B0D0 /* MainTabBarController.swift in Sources */,
 				36EA2D9F2913355F00F6B0D0 /* WriteCell.swift in Sources */,

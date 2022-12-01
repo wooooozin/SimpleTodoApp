@@ -121,6 +121,18 @@ extension WriteViewController: UITableViewDataSource {
         cell.todo = todoSaved
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let todoSaved = self.todoManager.searchDateTodoFromCoreData(date: selectedDate ?? Date())[indexPath.row]
+        if editingStyle == .delete {
+            guard let todoSavedID = todoSaved.id else { return }
+            todoManager.deleteTodo(with: todoSavedID, completion: {
+                self.writeView.tableView.reloadData()
+                self.writeView.calendarView.reloadData()
+            })
+            
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate
